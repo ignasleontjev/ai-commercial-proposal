@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Commercial Proposal - Powered by AWS</title>
+    <title>MiningOps AI Suite - AWS-Powered Mining Intelligence</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -19,14 +19,15 @@
             --light: #F8F9FA;
             --dark: #1A1A1A;
             --success: #10B981;
-            --error: #EF4444;
+            --earth: #8B7355;
+            --mining-blue: #1E3A8A;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--dark);
-            padding-bottom: 2rem;
+            background-color: #f5f7fa;
         }
 
         .container {
@@ -35,14 +36,15 @@
             padding: 0 20px;
         }
 
+        /* Header */
         header {
-            background: var(--secondary);
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--mining-blue) 100%);
             color: white;
-            padding: 2rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1.5rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .header-content {
@@ -50,7 +52,6 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
         }
 
         .logo {
@@ -59,170 +60,240 @@
             color: var(--primary);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
 
-        .edit-btn {
+        .logo-icon {
             background: var(--primary);
-            color: var(--dark);
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .edit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 153, 0, 0.3);
-        }
-
-        .hero {
-            background: linear-gradient(135deg, var(--secondary) 0%, #3d4f66 100%);
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .editable {
-            position: relative;
-            min-height: 30px;
-            padding: 5px;
-            border: 2px dashed transparent;
-            transition: all 0.3s;
-        }
-
-        .edit-mode .editable {
-            border-color: var(--accent);
-            background: rgba(0, 168, 225, 0.05);
-            cursor: pointer;
-        }
-
-        .section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
             color: var(--secondary);
-            text-align: center;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .card {
-            background: white;
-            padding: 2rem;
+            width: 50px;
+            height: 50px;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
         }
 
-        .feature-list {
-            list-style: none;
-            margin: 1rem 0;
+        .cta-button {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            border: 2px solid var(--primary);
         }
 
-        .feature-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
+        .cta-button:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-2px);
         }
 
-        .feature-list li:before {
-            content: "✓";
-            color: var(--success);
-            font-weight: bold;
-            margin-right: 0.5rem;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.7)), 
+                        url('https://images.unsplash.com/photo-1549439602-43ebca2327af?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
         }
 
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Solutions Grid */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .solution-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 1px solid #e5e7eb;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            border-color: var(--primary);
+        }
+
+        .solution-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), #ff7700);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .solution-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .solution-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Architecture Diagram */
+        .architecture-section {
+            background: var(--light);
+            padding: 5rem 0;
+        }
+
+        .architecture-diagram {
+            max-width: 900px;
+            margin: 3rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .architecture-diagram img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .architecture-layers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .layer {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .layer h4 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pricing Table */
         .pricing-table {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .pricing-card {
             background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .pricing-card:hover {
-            transform: scale(1.02);
+            transition: all 0.3s;
+            position: relative;
         }
 
         .pricing-card.featured {
             border: 3px solid var(--primary);
-            position: relative;
+            transform: scale(1.05);
         }
 
-        .featured-badge {
+        .pricing-badge {
             position: absolute;
-            top: -15px;
-            right: 20px;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
             background: var(--primary);
-            color: var(--dark);
-            padding: 0.5rem 1rem;
+            color: var(--secondary);
+            padding: 0.5rem 1.5rem;
             border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
+            font-weight: 600;
+            font-size: 0.9rem;
         }
 
         .price {
             font-size: 3rem;
             font-weight: 700;
             color: var(--primary);
-            margin: 1rem 0;
+            margin: 1.5rem 0;
         }
 
         .price-period {
@@ -230,716 +301,557 @@
             color: #666;
         }
 
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .pricing-features li:before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Implementation Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            width: 45%;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: auto;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid white;
+            z-index: 1;
+        }
+
+        /* ROI Calculator */
+        .roi-calculator {
+            background: linear-gradient(135deg, var(--secondary), var(--mining-blue));
+            color: white;
+            padding: 4rem;
+            border-radius: 16px;
+            margin-top: 3rem;
+        }
+
+        .roi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .roi-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .roi-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
         footer {
             background: var(--secondary);
             color: white;
-            padding: 3rem 0;
-            margin-top: 4rem;
+            padding: 4rem 0 2rem;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
-        /* CHATBOT BUBBLE STYLES */
-        #chatbot-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-            font-family: 'Inter', sans-serif;
+        .footer-section h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
         }
 
-        #chat-toggle {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary) 0%, #ff7700 100%);
-            border: none;
-            cursor: pointer;
-            font-size: 28px;
-            box-shadow: 0 4px 20px rgba(255, 153, 0, 0.4);
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+        .footer-links {
+            list-style: none;
         }
 
-        #chat-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(255, 153, 0, 0.5);
+        .footer-links li {
+            margin-bottom: 0.75rem;
         }
 
-        .chat-notification {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 20px;
-            height: 20px;
-            background: var(--error);
-            border-radius: 50%;
-            border: 2px solid white;
-            animation: pulse 2s infinite;
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
+        .footer-links a:hover {
+            color: var(--primary);
         }
 
-        #chat-window {
-            display: none;
-            width: 400px;
-            height: 600px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.25);
-            position: absolute;
-            bottom: 80px;
-            right: 0;
-            flex-direction: column;
-            overflow: hidden;
-            animation: slideUp 0.3s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        #chat-window.active {
-            display: flex;
-        }
-
-        .chat-header {
-            background: linear-gradient(135deg, var(--secondary) 0%, #3d4f66 100%);
-            color: white;
-            padding: 1.25rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .chat-header-content h3 {
-            margin: 0;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .chat-status {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 0.25rem;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--success);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        #chat-close {
-            background: rgba(255,255,255,0.1);
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 0;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            transition: all 0.2s;
-        }
-
-        #chat-close:hover {
-            background: rgba(255,255,255,0.2);
-            transform: rotate(90deg);
-        }
-
-        #chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 1.5rem;
-            background: #f9fafb;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        #chat-messages::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        #chat-messages::-webkit-scrollbar-thumb {
-            background: #cbd5e0;
-            border-radius: 3px;
-        }
-
-        .message {
-            max-width: 85%;
-            padding: 0.875rem 1.125rem;
-            border-radius: 16px;
-            word-wrap: break-word;
-            line-height: 1.5;
-            font-size: 0.95rem;
-            animation: messageSlide 0.3s ease-out;
-        }
-
-        @keyframes messageSlide {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .bot-message {
-            background: white;
-            color: var(--dark);
-            align-self: flex-start;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border-bottom-left-radius: 4px;
-        }
-
-        .user-message {
-            background: linear-gradient(135deg, var(--accent) 0%, #0086b8 100%);
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 4px;
-        }
-
-        .typing-indicator {
-            display: flex;
-            gap: 6px;
-            padding: 1rem 1.125rem;
-            background: white;
-            border-radius: 16px;
-            align-self: flex-start;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .typing-indicator span {
-            width: 8px;
-            height: 8px;
-            background: #9ca3af;
-            border-radius: 50%;
-            animation: typing 1.4s infinite;
-        }
-
-        .typing-indicator span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .typing-indicator span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes typing {
-            0%, 60%, 100% {
-                transform: translateY(0);
-                opacity: 0.7;
-            }
-            30% {
-                transform: translateY(-10px);
-                opacity: 1;
-            }
-        }
-
-        .chat-input-container {
-            padding: 1.25rem;
-            border-top: 1px solid #e5e7eb;
-            background: white;
-            display: flex;
-            gap: 0.75rem;
-            align-items: flex-end;
-        }
-
-        #chat-input {
-            flex: 1;
-            padding: 0.875rem 1rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            outline: none;
-            transition: border-color 0.2s;
-            resize: none;
-            max-height: 100px;
-            min-height: 44px;
-        }
-
-        #chat-input:focus {
-            border-color: var(--accent);
-        }
-
-        #chat-send {
-            background: linear-gradient(135deg, var(--primary) 0%, #ff7700 100%);
-            color: white;
-            padding: 0.875rem 1.5rem;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s;
-            font-size: 0.95rem;
-            white-space: nowrap;
-        }
-
-        #chat-send:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
-        }
-
-        #chat-send:active:not(:disabled) {
-            transform: translateY(0);
-        }
-
-        #chat-send:disabled {
-            background: #d1d5db;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .error-banner {
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
+        .copyright {
             text-align: center;
-            margin: 0.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+            font-size: 0.9rem;
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
-
-            #chat-window {
-                width: calc(100vw - 40px);
-                height: calc(100vh - 120px);
-                max-height: 600px;
-                right: 20px;
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
-
-            #chatbot-widget {
-                right: 20px;
-                bottom: 20px;
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+            }
+            
+            .timeline-marker {
+                left: 30px;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <span>🤖</span>
-                    <span>AI Solutions by AWS</span>
+                    <div class="logo-icon">⛏️</div>
+                    <span>MiningOps AI Suite</span>
                 </div>
-                <button class="edit-btn" onclick="toggleEditMode()">✏️ Edit Content</button>
+                <a href="#contact" class="cta-button">Get Custom Quote</a>
             </div>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1 class="editable" data-key="hero-title">Enterprise AI System for Your Business</h1>
-            <p class="subtitle editable" data-key="hero-subtitle">Complete AWS-Powered AI Solution with Machine Learning, Automation, and Advanced Analytics</p>
+            <h1>Enterprise AI System for Mining & Natural Resources</h1>
+            <p class="hero-subtitle">AWS-Powered MiningOps AI Suite for Safety, Asset Reliability, and Production Efficiency in Open-Pit or Underground Mines</p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">99.5%</span>
+                    <span class="stat-label">Uptime Guarantee</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">30%</span>
+                    <span class="stat-label">Downtime Reduction</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4-6</span>
+                    <span class="stat-label">Weeks Deployment</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$5M+</span>
+                    <span class="stat-label">Annual ROI Potential</span>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Solutions Section -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Our AI Solutions</h2>
+            <h2 class="section-title">AI Solutions for Mining Challenges</h2>
+            <p class="section-subtitle">Comprehensive AI-driven solutions addressing critical mining industry challenges</p>
             
-            <div class="grid-3">
-                <div class="card">
-                    <h3><span class="icon">🧠</span> Machine Learning & Analytics</h3>
-                    <p>Amazon SageMaker for building, training, and deploying custom ML models with real-time predictions.</p>
-                    <ul class="feature-list">
-                        <li>Custom ML model development</li>
-                        <li>Real-time inference API</li>
-                        <li>Automated retraining</li>
-                        <li>Model monitoring dashboard</li>
-                    </ul>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">🛡️</div>
+                    <h3>Safety AI & PPE Detection</h3>
+                    <p>Computer vision at the edge for PPE/fatigue detection, proximity alerts, and incident analytics with centralized safety KPIs.</p>
+                    <p><strong>AWS Services:</strong> IoT Greengrass, Rekognition, SageMaker</p>
                 </div>
-
-                <div class="card">
-                    <h3><span class="icon">💬</span> Intelligent Chatbot & NLP</h3>
-                    <p>Amazon Lex + Bedrock for conversational AI with natural language understanding.</p>
-                    <ul class="feature-list">
-                        <li>24/7 automated support</li>
-                        <li>Multi-language support</li>
-                        <li>Intent recognition</li>
-                        <li>System integration</li>
-                    </ul>
+                
+                <div class="solution-card">
+                    <div class="solution-icon">⚙️</div>
+                    <h3>Predictive Maintenance</h3>
+                    <p>Condition monitoring and predictive models on vibration, temperature, pressure with maintenance workbench and alerting.</p>
+                    <p><strong>AWS Services:</strong> IoT SiteWise, SageMaker, Lambda</p>
                 </div>
-
-                <div class="card">
-                    <h3><span class="icon">👁️</span> Computer Vision</h3>
-                    <p>Amazon Rekognition for image and video analysis, object detection, and quality control.</p>
-                    <ul class="feature-list">
-                        <li>Object & scene detection</li>
-                        <li>Text extraction (OCR)</li>
-                        <li>Quality automation</li>
-                        <li>Security monitoring</li>
-                    </ul>
+                
+                <div class="solution-card">
+                    <div class="solution-icon">📈</div>
+                    <h3>Production Optimization</h3>
+                    <p>Cycle-time analytics, queue optimization, idle-time reduction, and dispatch insights for haulage and plant bottlenecks.</p>
+                    <p><strong>AWS Services:</strong> Kinesis, QuickSight, DynamoDB</p>
                 </div>
-
-                <div class="card">
-                    <h3><span class="icon">📊</span> Data Analytics & BI</h3>
-                    <p>Amazon QuickSight with ML-powered insights and automated anomaly detection.</p>
-                    <ul class="feature-list">
-                        <li>Interactive dashboards</li>
-                        <li>Natural language queries</li>
-                        <li>Predictive forecasting</li>
-                        <li>Automated reporting</li>
-                    </ul>
+                
+                <div class="solution-card">
+                    <div class="solution-icon">🌍</div>
+                    <h3>Geo-Intelligence Monitoring</h3>
+                    <p>Automated NDVI/land disturbance layers and tailings/stockpile monitoring from Sentinel‑2 satellite data.</p>
+                    <p><strong>AWS Services:</strong> OpenSearch, S3, Lambda</p>
                 </div>
-
-                <div class="card">
-                    <h3><span class="icon">🔄</span> Process Automation</h3>
-                    <p>AWS Lambda + Step Functions for intelligent workflow automation.</p>
-                    <ul class="feature-list">
-                        <li>Automated data processing</li>
-                        <li>Intelligent routing</li>
-                        <li>Error handling & recovery</li>
-                        <li>Scalable microservices</li>
-                    </ul>
+                
+                <div class="solution-card">
+                    <div class="solution-icon">🤖</div>
+                    <h3>AI Copilot for Operations</h3>
+                    <p>Chat-based assistant for SOP lookups, shift handover notes, and natural-language queries over KPIs and logs.</p>
+                    <p><strong>AWS Services:</strong> Bedrock, Lex, Lambda</p>
                 </div>
-
-                <div class="card">
-                    <h3><span class="icon">🔒</span> AI Security & Compliance</h3>
-                    <p>AWS Security Hub + GuardDuty for threat detection and compliance monitoring.</p>
-                    <ul class="feature-list">
-                        <li>Real-time threat detection</li>
-                        <li>Compliance automation</li>
-                        <li>Data encryption</li>
-                        <li>Audit trail & reporting</li>
-                    </ul>
+                
+                <div class="solution-card">
+                    <div class="solution-icon">📊</div>
+                    <h3>Mine-to-Market Analytics</h3>
+                    <p>Dashboards for OEE, throughput, recovery, energy and emissions; drill-and-blast to mill reconciliation.</p>
+                    <p><strong>AWS Services:</strong> QuickSight, Redshift, Glue</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Architecture Section -->
+    <section class="architecture-section">
+        <div class="container">
+            <h2 class="section-title">System Architecture</h2>
+            <p class="section-subtitle">AWS-managed, security-hardened architecture designed for mining operations</p>
+            
+            <div class="architecture-diagram">
+                <img src="https://via.placeholder.com/900x450/232F3E/FFFFFF?text=MiningOps+AI+Architecture+Diagram" alt="System Architecture Diagram">
+                <p class="section-subtitle" style="margin-top: 1rem; font-size: 0.9rem;">Figure: Core AWS architecture for MiningOps AI Suite</p>
+            </div>
+            
+            <div class="architecture-layers">
+                <div class="layer">
+                    <h4>Edge Layer</h4>
+                    <p>AWS IoT Greengrass for secure local processing on truck/plant gateways (NVIDIA Jetson/Intel)</p>
+                </div>
+                <div class="layer">
+                    <h4>Ingestion Layer</h4>
+                    <p>AWS IoT Core (MQTT) and Amazon Kinesis for high-rate sensor/video streams</p>
+                </div>
+                <div class="layer">
+                    <h4>Data Lake</h4>
+                    <p>Amazon S3 + Lake Formation + AWS Glue for governed storage and ETL</p>
+                </div>
+                <div class="layer">
+                    <h4>AI/ML Layer</h4>
+                    <p>Amazon SageMaker for classical ML and Amazon Bedrock for GenAI assistants</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Timeline -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Implementation Plan</h2>
+            <p class="section-subtitle">14-week phased delivery for one flagship mining site</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Phase 1: Discovery (Weeks 1-2)</h3>
+                        <p>Data & connectivity assessment, success criteria definition, site safety workshop</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Phase 2: Pilot (Weeks 3-6)</h3>
+                        <p>10 assets instrumented, initial models & dashboards, user feedback collection</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Phase 3: Scale (Weeks 7-10)</h3>
+                        <p>Security hardening, data governance, CMMS/ERP integration, 40+ assets added</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Phase 4: Rollout (Weeks 11-14)</h3>
+                        <p>Full critical asset coverage, training, runbooks, handover, ROI measurement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
     <section class="section" style="background: var(--light);">
         <div class="container">
-            <h2 class="section-title">Pricing Options</h2>
+            <h2 class="section-title">Pricing & ROI Analysis</h2>
+            <p class="section-subtitle">Representative monthly costs for single site (50 haul trucks + 1 process plant)</p>
+            
             <div class="pricing-table">
                 <div class="pricing-card">
-                    <h3>Starter Package</h3>
-                    <div class="price">$2,500<span class="price-period">/month</span></div>
-                    <ul class="feature-list">
-                        <li>Basic chatbot (1,000 req/day)</li>
-                        <li>1 ML model deployment</li>
-                        <li>100GB data storage</li>
-                        <li>Email support</li>
-                        <li>Monthly analytics report</li>
-                    </ul>
-                </div>
-
-                <div class="pricing-card featured">
-                    <span class="featured-badge">Most Popular</span>
-                    <h3>Professional Package</h3>
-                    <div class="price">$5,800<span class="price-period">/month</span></div>
-                    <ul class="feature-list">
-                        <li>Advanced chatbot (10K req/day)</li>
-                        <li>Up to 5 ML models</li>
-                        <li>Computer vision included</li>
-                        <li>500GB data storage</li>
+                    <h3>QuickSight BI</h3>
+                    <div class="price">$420<span class="price-period">/month</span></div>
+                    <ul class="pricing-features">
+                        <li>10 Authors + 60 Readers</li>
+                        <li>Interactive dashboards</li>
                         <li>Real-time analytics</li>
-                        <li>24/7 priority support</li>
+                        <li>Automated reporting</li>
+                    </ul>
+                    <a href="https://aws.amazon.com/quicksight/pricing/" class="cta-button" style="display: block; text-align: center;">Pricing Details</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Common</div>
+                    <h3>Core Platform</h3>
+                    <div class="price">$1,165<span class="price-period">/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Managed Grafana: $145</li>
+                        <li>OpenSearch: $250</li>
+                        <li>SageMaker: Usage-based</li>
+                        <li>IoT SiteWise: Usage-based</li>
+                        <li>Kinesis: Usage-based</li>
+                        <li>Bedrock: Usage-based</li>
+                    </ul>
+                    <a href="https://aws.amazon.com/pricing/" class="cta-button" style="display: block; text-align: center;">View All Pricing</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Total Monthly Estimate</h3>
+                    <div class="price">$1,585<span class="price-period">/month*</span></div>
+                    <ul class="pricing-features">
+                        <li>*Usage-based components may vary</li>
+                        <li>All AWS managed services</li>
+                        <li>24/7 support included</li>
+                        <li>99.9% SLA guarantee</li>
+                        <li>Monthly optimizations</li>
+                    </ul>
+                    <a href="#contact" class="cta-button" style="display: block; text-align: center;">Get Custom Quote</a>
+                </div>
+            </div>
+            
+            <div class="roi-calculator">
+                <h3 style="text-align: center; margin-bottom: 1rem;">ROI Snapshot (Conservative Estimate)</h3>
+                <p style="text-align: center; opacity: 0.9; margin-bottom: 2rem;">Assume $100M annual operations at a site</p>
+                
+                <div class="roi-grid">
+                    <div class="roi-item">
+                        <h4>Downtime Reduction</h4>
+                        <span class="roi-value">2%</span>
+                        <p>Unplanned downtime decrease</p>
+                    </div>
+                    
+                    <div class="roi-item">
+                        <h4>Productivity Uplift</h4>
+                        <span class="roi-value">3%</span>
+                        <p>Overall efficiency improvement</p>
+                    </div>
+                    
+                    <div class="roi-item">
+                        <h4>Annual Benefits</h4>
+                        <span class="roi-value">$5M+</span>
+                        <p>Estimated yearly value</p>
+                    </div>
+                    
+                    <div class="roi-item">
+                        <h4>Payback Period</h4>
+                        <span class="roi-value">< 3 months</span>
+                        <p>For 1% improvement scenario</p>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
+                    *Actual ROI validated during pilot phase. Even 1% improvement justifies platform within months.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specs -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Specifications</h2>
+            
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <h3>Edge Gateway</h3>
+                    <p>x86_64 or ARM64 (8-16GB RAM) with Ubuntu 20.04/22.04, NVIDIA Jetson optional for CV workloads</p>
+                </div>
+                
+                <div class="solution-card">
+                    <h3>Protocols Supported</h3>
+                    <p>MQTT, OPC UA/DA (via connectors), Modbus/TCP, RTSP for video streams</p>
+                </div>
+                
+                <div class="solution-card">
+                    <h3>Data Retention</h3>
+                    <p>Hot (OpenSearch) 7-14 days; Warm/cold (S3) 1-7 years as required by regulations</p>
+                </div>
+                
+                <div class="solution-card">
+                    <h3>Model Governance</h3>
+                    <p>Feature store, experiment tracking, CI/CD for ML pipelines, automated retraining</p>
+                </div>
+                
+                <div class="solution-card">
+                    <h3>Availability</h3>
+                    <p>Multi-AZ managed services; offline buffering on edge agents (72+ hours)</p>
+                </div>
+                
+                <div class="solution-card">
+                    <h3>Security Standards</h3>
+                    <p>ISO 27001, SOC 1/2/3, PCI DSS, GDPR-ready data governance and residency controls</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section" style="background: var(--secondary); color: white;">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Ready to Transform Your Mining Operations?</h2>
+            <p class="section-subtitle" style="color: #ccc; margin-bottom: 3rem;">
+                Contact us for a customized proposal and pilot program
+            </p>
+            
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AWS Services Used</h3>
+                    <ul class="footer-links">
+                        <li>Amazon SageMaker</li>
+                        <li>AWS IoT Greengrass</li>
+                        <li>Amazon QuickSight</li>
+                        <li>Amazon Bedrock</li>
+                        <li>AWS IoT SiteWise</li>
+                        <li>Amazon Rekognition</li>
                     </ul>
                 </div>
-
-                <div class="pricing-card">
-                    <h3>Enterprise Package</h3>
-                    <div class="price">$12,000<span class="price-period">/month</span></div>
-                    <ul class="feature-list">
-                        <li>Unlimited AI requests</li>
-                        <li>Custom ML development</li>
-                        <li>Full AWS integration</li>
-                        <li>Unlimited storage</li>
-                        <li>Dedicated support team</li>
-                        <li>99.9% SLA guarantee</li>
+                
+                <div class="footer-section">
+                    <h3>Implementation</h3>
+                    <ul class="footer-links">
+                        <li>4-6 weeks deployment</li>
+                        <li>Training included</li>
+                        <li>24/7 Support available</li>
+                        <li>Documentation provided</li>
+                        <li>Monthly performance reviews</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <ul class="footer-links">
+                        <li>Email: mining-ai@yourcompany.com</li>
+                        <li>Phone: +370 600 00000</li>
+                        <li>Website: www.miningops-ai.com</li>
+                        <li>Location: Vilnius, Lithuania</li>
+                        <li>AWS Partner ID: APN-XXXX-XXXX</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <h3>AWS Services</h3>
-                    <p>SageMaker • Bedrock • Lambda<br>
-                    Rekognition • QuickSight<br>
-                    DynamoDB • S3 Storage</p>
+                    <h3>Additional Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://aws.amazon.com/solutions/case-studies/mining/">AWS Mining Case Studies</a></li>
+                        <li><a href="https://aws.amazon.com/iot/sitewise/">AWS IoT SiteWise Details</a></li>
+                        <li><a href="https://aws.amazon.com/sagemaker/industrial-ai/">Industrial AI on SageMaker</a></li>
+                    </ul>
                 </div>
+                
                 <div>
-                    <h3>Implementation</h3>
-                    <p>4-6 weeks deployment<br>
-                    Training included<br>
-                    24/7 Support available<br>
-                    Documentation provided</p>
+                    <h3>Certifications</h3>
+                    <ul class="footer-links">
+                        <li>AWS Advanced Partner</li>
+                        <li>ISO 27001 Certified</li>
+                        <li>SOC 2 Type II Compliant</li>
+                        <li>GDPR Compliant</li>
+                    </ul>
                 </div>
-                <div>
-                    <h3>Contact</h3>
-                    <p>Email: info@yourcompany.com<br>
-                    Phone: +370 XXX XXXXX<br>
-                    Website: www.yourcompany.com</p>
-                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2024 MiningOps AI Suite. All rights reserved. | This is a commercial proposal for educational purposes</p>
+                <p style="margin-top: 0.5rem;">Submitted by: TDIifu-25 student Ignas Leontjev | Evaluated by: Dr. Sigitas Petkevičius</p>
             </div>
         </div>
     </footer>
-
-    <!-- Chatbot Widget -->
-    <div id="chatbot-widget">
-        <button id="chat-toggle" aria-label="Open AI chat assistant">
-            💬
-            <span class="chat-notification" id="notification" style="display: none;"></span>
-        </button>
-        
-        <div id="chat-window">
-            <div class="chat-header">
-                <div class="chat-header-content">
-                    <h3>AI Assistant</h3>
-                    <div class="chat-status">
-                        <span class="status-dot"></span>
-                        <span>Online & Ready</span>
-                    </div>
-                </div>
-                <button id="chat-close" aria-label="Close chat">×</button>
-            </div>
-            
-            <div id="chat-messages">
-                <div class="message bot-message">
-                    👋 Hello! I'm your AI assistant. I can help you learn about our AWS-powered AI solutions, pricing, implementation, ROI, and more. What would you like to know?
-                </div>
-            </div>
-            
-            <div class="chat-input-container">
-                <textarea id="chat-input" placeholder="Ask me anything..." aria-label="Type your message" rows="1"></textarea>
-                <button id="chat-send" aria-label="Send message">Send</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // =================================================================
-        // CONFIGURATION - REPLACE THIS WITH YOUR API GATEWAY URL
-        // =================================================================
-        const API_URL = 'https://90ht3dn0ac.execute-api.us-east-1.amazonaws.com/prod/chatbot';
-        // =================================================================
-
-        let editMode = false;
-        let content = {};
-
-        // Content management
-        function loadContent() {
-            const saved = localStorage.getItem('proposalContent');
-            if (saved) {
-                content = JSON.parse(saved);
-                applyContent();
-            }
-        }
-
-        function applyContent() {
-            document.querySelectorAll('.editable').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (content[key]) {
-                    el.innerHTML = content[key];
-                }
-            });
-        }
-
-        function toggleEditMode() {
-            editMode = !editMode;
-            document.body.classList.toggle('edit-mode', editMode);
-            
-            document.querySelectorAll('.editable').forEach(el => {
-                if (editMode) {
-                    el.style.cursor = 'pointer';
-                    el.onclick = () => {
-                        const key = el.getAttribute('data-key');
-                        const newContent = prompt('Edit content:', el.innerHTML);
-                        if (newContent !== null) {
-                            el.innerHTML = newContent;
-                            content[key] = newContent;
-                            localStorage.setItem('proposalContent', JSON.stringify(content));
-                        }
-                    };
-                } else {
-                    el.style.cursor = 'default';
-                    el.onclick = null;
-                }
-            });
-        }
-
-        // Chatbot functionality
-        const chatToggle = document.getElementById('chat-toggle');
-        const chatWindow = document.getElementById('chat-window');
-        const chatClose = document.getElementById('chat-close');
-        const chatInput = document.getElementById('chat-input');
-        const chatSend = document.getElementById('chat-send');
-        const chatMessages = document.getElementById('chat-messages');
-        const notification = document.getElementById('notification');
-
-        // Show notification after 3 seconds
-        setTimeout(() => {
-            if (!chatWindow.classList.contains('active')) {
-                notification.style.display = 'block';
-            }
-        }, 3000);
-
-        chatToggle.onclick = () => {
-            chatWindow.classList.toggle('active');
-            notification.style.display = 'none';
-            if (chatWindow.classList.contains('active')) {
-                chatInput.focus();
-            }
-        };
-
-        chatClose.onclick = () => {
-            chatWindow.classList.remove('active');
-        };
-
-        // Auto-resize textarea
-        chatInput.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = Math.min(this.scrollHeight, 100) + 'px';
-        });
-
-        async function sendMessage() {
-            const message = chatInput.value.trim();
-            if (!message) return;
-
-            // Disable inputs
-            chatInput.disabled = true;
-            chatSend.disabled = true;
-
-            // Add user message
-            addMessage(message, 'user');
-            chatInput.value = '';
-            chatInput.style.height = '44px';
-
-            // Show typing indicator
-            const typingIndicator = document.createElement('div');
-            typingIndicator.className = 'typing-indicator';
-            typingIndicator.innerHTML = '<span></span><span></span><span></span>';
-            typingIndicator.id = 'typing';
-            chatMessages.appendChild(typingIndicator);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            try {
-                // Get company field from page
-                const titleElement = document.querySelector('[data-key="hero-title"]');
-                const companyField = titleElement ? titleElement.innerText.replace('Enterprise AI System for', '').trim() : 'business';
-
-                // Call Lambda via API Gateway
-                console.log('Sending request to:', API_URL);
-                
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: message,
-                        companyField: companyField
-                    })
-                });
-
-                console.log('Response status:', response.status);
-
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                }
-
-                const data = await response.json();
-                console.log('Response data:', data);
-
-                // Remove typing indicator
-                const typingEl = document.getElementById('typing');
-                if (typingEl) typingEl.remove();
-
-                // Add AI response
-                if (data.success && data.response) {
-                    addMessage(data.response, 'bot');
-                } else {
-                    addMessage('Sorry, I received an unexpected response. Please try again.', 'bot');
-                }
-
-            } catch (error) {
-                console.error('Chat error:', error);
-                const typingEl = document.getElementById('typing');
-                if (typingEl) typingEl.remove();
-                
-                // Show user-friendly error
-                let errorMessage = '❌ Sorry, there was an error connecting to the AI. ';
-                errorMessage += 'Please try again in a moment.';
-                
-                addMessage(errorMessage, 'bot');
-            } finally {
-                chatInput.disabled = false;
-                chatSend.disabled = false;
-                chatInput.focus();
-            }
-        }
-
-        function addMessage(text, sender) {
-            const div = document.createElement('div');
-            div.className = `message ${sender}-message`;
-            
-            // Format the message with line breaks
-            div.innerHTML = text.replace(/\n/g, '<br>');
-            
-            chatMessages.appendChild(div);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        chatSend.onclick = sendMessage;
-        
-        chatInput.onkeypress = (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
-        };
-
-        // Initialize
-        window.onload = () => {
-            loadContent();
-        };
-
-        // Close chat with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && chatWindow.classList.contains('active')) {
-                chatWindow.classList.remove('active');
-            }
-        });
-    </script>
 </body>
 </html>
