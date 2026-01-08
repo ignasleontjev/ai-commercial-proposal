@@ -859,16 +859,48 @@
                 const titleElement = document.querySelector('[data-key="hero-title"]');
                 const companyField = titleElement ? titleElement.innerText.replace('Enterprise AI System for', '').trim() : 'business';
 
-                // Check if API is configured
-                if (!API_URL || API_URL === 'https://90ht3dn0ac.execute-api.us-east-1.amazonaws.com/prod/chatbot') {
-                    // Show error about missing API configuration
-                    document.getElementById('typing').remove();
-                    addMessage('⚠️ API Gateway URL not configured. Please update the API_URL in the code with your actual API Gateway endpoint. See the setup guide for instructions.', 'bot');
-                    chatInput.disabled = false;
-                    chatSend.disabled = false;
-                    return;
-                }
+// After removing the check, it should look like this:
+async function sendMessage() {
+    const message = chatInput.value.trim();
+    if (!message) return;
 
+    // Disable inputs
+    chatInput.disabled = true;
+    chatSend.disabled = true;
+
+    // Add user message
+    addMessage(message, 'user');
+    chatInput.value = '';
+    chatInput.style.height = '44px';
+
+    // Show typing indicator
+    const typingIndicator = document.createElement('div');
+    typingIndicator.className = 'typing-indicator';
+    typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+    typingIndicator.id = 'typing';
+    chatMessages.appendChild(typingIndicator);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    try {
+        // Get company field from page
+        const titleElement = document.querySelector('[data-key="hero-title"]');
+        const companyField = titleElement ? titleElement.innerText.replace('Enterprise AI System for', '').trim() : 'business';
+
+        // DIRECT API CALL - NO CHECK
+        console.log('Sending request to:', API_URL);
+        
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: message,
+                companyField: companyField
+            })
+        });
+
+        // ... rest of your code
                 // Call Lambda via API Gateway
                 console.log('Sending request to:', API_URL);
                 
@@ -961,6 +993,7 @@
     </script>
 </body>
 </html>
+
 
 
 
