@@ -1,710 +1,414 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI System Commercial Proposal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #FF9900;
-            --secondary: #232F3E;
-            --accent: #00A8E1;
-            --light: #F8F9FA;
-            --dark: #1A1A1A;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: var(--secondary);
-            color: white;
-            padding: 2rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .edit-btn {
-            background: var(--primary);
-            color: var(--dark);
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .edit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 153, 0, 0.3);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--secondary) 0%, #3d4f66 100%);
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        /* Editable Content Areas */
-        .editable {
-            position: relative;
-            min-height: 30px;
-            padding: 5px;
-            border: 2px dashed transparent;
-            transition: all 0.3s;
-        }
-
-        .edit-mode .editable {
-            border-color: var(--accent);
-            background: rgba(0, 168, 225, 0.05);
-        }
-
-        .editable:hover {
-            background: rgba(0, 168, 225, 0.02);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: var(--secondary);
-            text-align: center;
-        }
-
-        /* Grid Layouts */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        /* Pricing Table */
-        .pricing-table {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .pricing-card {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .pricing-card.featured {
-            border: 3px solid var(--primary);
-            transform: scale(1.05);
-        }
-
-        .price {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 1rem 0;
-        }
-
-        .price-period {
-            font-size: 1rem;
-            color: #666;
-        }
-
-        .feature-list {
-            list-style: none;
-            margin: 2rem 0;
-            text-align: left;
-        }
-
-        .feature-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .feature-list li:before {
-            content: "✓";
-            color: var(--primary);
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-
-        /* Architecture Diagram */
-        .architecture-diagram {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            margin: 2rem 0;
-        }
-
-        .diagram-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .diagram-box {
-            background: var(--light);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 2px solid var(--accent);
-            min-width: 150px;
-            text-align: center;
-        }
-
-        .arrow {
-            font-size: 2rem;
-            color: var(--accent);
-        }
-
-        /* ROI Section */
-        .roi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .roi-card {
-            background: linear-gradient(135deg, var(--primary) 0%, #ff7700 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .roi-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 1rem 0;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--secondary);
-            color: white;
-            padding: 3rem 0;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        /* Edit Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            max-width: 800px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        textarea {
-            width: 100%;
-            min-height: 150px;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-            margin: 1rem 0;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: var(--dark);
-        }
-
-        .btn-secondary {
-            background: #ddd;
-            color: var(--dark);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .grid-3, .pricing-table {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">🤖 AI Solutions by AWS</div>
-                <button class="edit-btn" onclick="toggleEditMode()">✏️ Edit Content</button>
+<!-- Chat Bubble Widget -->
+<div id="chatWidget">
+    <!-- Chat Button -->
+    <div id="chatButton">
+        <span>💬</span>
+        <span id="chatNotification" style="display: none;">1</span>
+    </div>
+    
+    <!-- Chat Window -->
+    <div id="chatWindow">
+        <div id="chatHeader">
+            <div id="chatTitle">
+                <strong>AI Assistant</strong>
+                <small>Powered by AWS</small>
+            </div>
+            <button id="closeChat">×</button>
+        </div>
+        
+        <div id="chatMessages">
+            <div class="welcome-message">
+                <strong>Hello! I'm your AI assistant.</strong><br>
+                I can answer questions about:
+                <ul>
+                    <li>💰 Pricing & packages</li>
+                    <li>✨ Features & capabilities</li>
+                    <li>📅 Implementation timeline</li>
+                    <li>📊 ROI & cost savings</li>
+                    <li>🎯 Scheduling a demo</li>
+                </ul>
+                What would you like to know?
             </div>
         </div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <h1 class="editable" data-key="hero-title">Enterprise AI System for [COMPANY FIELD]</h1>
-            <p class="subtitle editable" data-key="hero-subtitle">Complete AWS-Powered AI Solution with Machine Learning, Automation, and Advanced Analytics</p>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title editable" data-key="solutions-title">Our AI Solutions</h2>
-            
-            <div class="grid-3">
-                <div class="card">
-                    <h3><span class="icon">🧠</span> <span class="editable" data-key="solution1-title">Machine Learning & Predictive Analytics</span></h3>
-                    <p class="editable" data-key="solution1-desc">Amazon SageMaker for building, training, and deploying ML models. Includes automated model tuning and real-time predictions.</p>
-                    <ul class="feature-list">
-                        <li>Custom ML model development</li>
-                        <li>Real-time inference API</li>
-                        <li>Automated retraining pipeline</li>
-                        <li>Model monitoring dashboard</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3><span class="icon">💬</span> <span class="editable" data-key="solution2-title">Intelligent Chatbot & NLP</span></h3>
-                    <p class="editable" data-key="solution2-desc">Amazon Lex + Bedrock for conversational AI with natural language understanding and generation capabilities.</p>
-                    <ul class="feature-list">
-                        <li>24/7 automated customer support</li>
-                        <li>Multi-language support</li>
-                        <li>Intent recognition & entity extraction</li>
-                        <li>Integration with existing systems</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3><span class="icon">👁️</span> <span class="editable" data-key="solution3-title">Computer Vision & Image Recognition</span></h3>
-                    <p class="editable" data-key="solution3-desc">Amazon Rekognition for image and video analysis, object detection, and facial recognition.</p>
-                    <ul class="feature-list">
-                        <li>Object & scene detection</li>
-                        <li>Text extraction from images</li>
-                        <li>Quality control automation</li>
-                        <li>Security & monitoring</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3><span class="icon">📊</span> <span class="editable" data-key="solution4-title">Data Analytics & Business Intelligence</span></h3>
-                    <p class="editable" data-key="solution4-desc">Amazon QuickSight with ML-powered insights and automated anomaly detection.</p>
-                    <ul class="feature-list">
-                        <li>Interactive dashboards</li>
-                        <li>Natural language queries</li>
-                        <li>Predictive forecasting</li>
-                        <li>Automated reporting</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3><span class="icon">🔄</span> <span class="editable" data-key="solution5-title">Process Automation & Optimization</span></h3>
-                    <p class="editable" data-key="solution5-desc">AWS Lambda + Step Functions for intelligent workflow automation and optimization.</p>
-                    <ul class="feature-list">
-                        <li>Automated data processing</li>
-                        <li>Intelligent routing & scheduling</li>
-                        <li>Error handling & recovery</li>
-                        <li>Scalable microservices</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3><span class="icon">🔒</span> <span class="editable" data-key="solution6-title">AI Security & Compliance</span></h3>
-                    <p class="editable" data-key="solution6-desc">AWS Security Hub + GuardDuty for AI-powered threat detection and compliance monitoring.</p>
-                    <ul class="feature-list">
-                        <li>Real-time threat detection</li>
-                        <li>Compliance automation</li>
-                        <li>Data encryption & access control</li>
-                        <li>Audit trail & reporting</li>
-                    </ul>
-                </div>
+        
+        <div id="chatInputArea">
+            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                <select id="industrySelect" style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
+                    <option value="healthcare">🏥 Healthcare</option>
+                    <option value="retail">🛒 Retail</option>
+                    <option value="finance">💰 Finance</option>
+                    <option value="manufacturing" selected>🏭 Manufacturing</option>
+                    <option value="education">🎓 Education</option>
+                    <option value="logistics">🚚 Logistics</option>
+                    <option value="realestate">🏠 Real Estate</option>
+                    <option value="agriculture">🌾 Agriculture</option>
+                </select>
             </div>
-        </div>
-    </section>
-
-    <section class="section" style="background: var(--light);">
-        <div class="container">
-            <h2 class="section-title">System Architecture</h2>
-            <div class="architecture-diagram">
-                <h3 style="text-align: center; margin-bottom: 2rem;">AWS AI System Architecture</h3>
-                <div class="diagram-container">
-                    <div class="diagram-box">
-                        <strong>Frontend</strong><br>
-                        React + Amplify<br>
-                        CloudFront CDN
-                    </div>
-                    <span class="arrow">→</span>
-                    <div class="diagram-box">
-                        <strong>API Layer</strong><br>
-                        API Gateway<br>
-                        Lambda Functions
-                    </div>
-                    <span class="arrow">→</span>
-                    <div class="diagram-box">
-                        <strong>AI Services</strong><br>
-                        SageMaker<br>
-                        Bedrock<br>
-                        Rekognition
-                    </div>
-                    <span class="arrow">→</span>
-                    <div class="diagram-box">
-                        <strong>Data Layer</strong><br>
-                        S3 Storage<br>
-                        DynamoDB<br>
-                        RDS
-                    </div>
-                </div>
-                <p style="text-align: center; margin-top: 2rem;"><strong>All services are serverless, auto-scaling, and highly available across multiple availability zones.</strong></p>
+            <div style="display: flex; gap: 8px;">
+                <input type="text" id="chatInput" placeholder="Type your question here...">
+                <button id="sendButton">Send</button>
             </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Pricing Options</h2>
-            <div class="pricing-table">
-                <div class="pricing-card">
-                    <h3>Starter Package</h3>
-                    <div class="price">$2,500<span class="price-period">/month</span></div>
-                    <ul class="feature-list">
-                        <li>Basic chatbot (1,000 requests/day)</li>
-                        <li>ML model deployment (1 model)</li>
-                        <li>Data storage (100GB)</li>
-                        <li>Email support</li>
-                        <li>Monthly analytics report</li>
-                    </ul>
-                </div>
-
-                <div class="pricing-card featured">
-                    <h3>Professional Package</h3>
-                    <div class="price">$5,800<span class="price-period">/month</span></div>
-                    <ul class="feature-list">
-                        <li>Advanced chatbot (10,000 requests/day)</li>
-                        <li>Multiple ML models (up to 5)</li>
-                        <li>Computer vision integration</li>
-                        <li>Data storage (500GB)</li>
-                        <li>Real-time analytics dashboard</li>
-                        <li>24/7 priority support</li>
-                    </ul>
-                </div>
-
-                <div class="pricing-card">
-                    <h3>Enterprise Package</h3>
-                    <div class="price">$12,000<span class="price-period">/month</span></div>
-                    <ul class="feature-list">
-                        <li>Unlimited AI requests</li>
-                        <li>Custom ML model development</li>
-                        <li>Full AWS service integration</li>
-                        <li>Unlimited data storage</li>
-                        <li>Dedicated support team</li>
-                        <li>Custom development hours</li>
-                        <li>SLA guarantee (99.9%)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="background: var(--light);">
-        <div class="container">
-            <h2 class="section-title">Return on Investment</h2>
-            <div class="roi-grid">
-                <div class="roi-card">
-                    <div>Cost Reduction</div>
-                    <div class="roi-number">40%</div>
-                    <div>Through automation</div>
-                </div>
-                <div class="roi-card">
-                    <div>Productivity Increase</div>
-                    <div class="roi-number">3.5x</div>
-                    <div>Faster processing</div>
-                </div>
-                <div class="roi-card">
-                    <div>Customer Satisfaction</div>
-                    <div class="roi-number">95%</div>
-                    <div>Improved response time</div>
-                </div>
-                <div class="roi-card">
-                    <div>Break-even Period</div>
-                    <div class="roi-number">8-12</div>
-                    <div>Months</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div>
-                    <h3>AWS Services Used</h3>
-                    <ul>
-                        <li>Amazon SageMaker</li>
-                        <li>Amazon Bedrock</li>
-                        <li>Amazon Lex</li>
-                        <li>Amazon Rekognition</li>
-                        <li>AWS Lambda</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Implementation</h3>
-                    <ul>
-                        <li>4-6 weeks deployment</li>
-                        <li>Training included</li>
-                        <li>Documentation provided</li>
-                        <li>Ongoing optimization</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Contact</h3>
-                    <p>Email: info@yourcompany.com<br>
-                    Phone: +370 XXX XXXXX<br>
-                    Website: www.yourcompany.com</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Edit Modal -->
-    <div class="modal" id="editModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Edit Content</h2>
-                <button class="close-btn" onclick="closeModal()">×</button>
-            </div>
-            <label>Content:</label>
-            <textarea id="editTextarea"></textarea>
-            <div class="btn-group">
-                <button class="btn btn-primary" onclick="saveEdit()">Save Changes</button>
-                <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
-            </div>
+            <small style="color: #666; display: block; margin-top: 8px;">
+                Try: "What are your prices?" or "Tell me about implementation"
+            </small>
         </div>
     </div>
+</div>
 
-    <script>
-        let editMode = false;
-        let currentEditKey = null;
-        let content = {};
+<style>
+    /* Chat Widget Styles */
+    #chatWidget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
 
-        // Load saved content from localStorage
-        function loadContent() {
-            const saved = localStorage.getItem('proposalContent');
-            if (saved) {
-                content = JSON.parse(saved);
-                applyContent();
+    #chatButton {
+        background: #FF9900;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+        position: relative;
+        transition: all 0.3s;
+    }
+
+    #chatButton:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(255, 153, 0, 0.4);
+    }
+
+    #chatNotification {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #FF3333;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #chatWindow {
+        position: absolute;
+        bottom: 70px;
+        right: 0;
+        width: 400px;
+        height: 500px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+        display: none;
+        flex-direction: column;
+    }
+
+    #chatHeader {
+        background: #232F3E;
+        color: white;
+        padding: 15px;
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #chatTitle strong {
+        font-size: 16px;
+        display: block;
+    }
+
+    #chatTitle small {
+        font-size: 12px;
+        opacity: 0.8;
+    }
+
+    #closeChat {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    #chatMessages {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        background: #f8f9fa;
+        font-size: 14px;
+    }
+
+    .welcome-message {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #e0e0e0;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .welcome-message ul {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+
+    .welcome-message li {
+        margin: 5px 0;
+    }
+
+    .message {
+        margin-bottom: 15px;
+        max-width: 85%;
+    }
+
+    .user-message {
+        background: #FF9900;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 15px 15px 0 15px;
+        margin-left: auto;
+    }
+
+    .bot-message {
+        background: white;
+        color: #333;
+        padding: 15px;
+        border-radius: 15px 15px 15px 0;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .bot-message strong {
+        color: #232F3E;
+    }
+
+    .bot-message ul, .bot-message ol {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+
+    .bot-message li {
+        margin: 5px 0;
+    }
+
+    #chatInputArea {
+        padding: 15px;
+        border-top: 1px solid #eee;
+        background: white;
+    }
+
+    #chatInput {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        font-family: inherit;
+    }
+
+    #chatInput:focus {
+        outline: none;
+        border-color: #FF9900;
+    }
+
+    #sendButton {
+        background: #FF9900;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 0 20px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background 0.3s;
+    }
+
+    #sendButton:hover {
+        background: #e68a00;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+        #chatWidget {
+            bottom: 10px;
+            right: 10px;
+        }
+        
+        #chatWindow {
+            width: calc(100vw - 20px);
+            right: -10px;
+        }
+    }
+</style>
+
+<script>
+    // Chat functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatButton = document.getElementById('chatButton');
+        const chatWindow = document.getElementById('chatWindow');
+        const closeChat = document.getElementById('closeChat');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendButton = document.getElementById('sendButton');
+        const industrySelect = document.getElementById('industrySelect');
+        
+        // Chat state
+        let isOpen = false;
+        let hasNewMessage = false;
+        
+        // Toggle chat window
+        chatButton.addEventListener('click', function() {
+            isOpen = !isOpen;
+            chatWindow.style.display = isOpen ? 'flex' : 'none';
+            
+            if (isOpen && hasNewMessage) {
+                hasNewMessage = false;
+                document.getElementById('chatNotification').style.display = 'none';
             }
-        }
-
-        // Apply loaded content to page
-        function applyContent() {
-            document.querySelectorAll('.editable').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (content[key]) {
-                    el.innerHTML = content[key];
-                }
-            });
-        }
-
-        // Toggle edit mode
-        function toggleEditMode() {
-            editMode = !editMode;
-            document.body.classList.toggle('edit-mode', editMode);
-            
-            if (editMode) {
-                document.querySelectorAll('.editable').forEach(el => {
-                    el.style.cursor = 'pointer';
-                    el.onclick = () => openEditModal(el);
-                });
-            } else {
-                document.querySelectorAll('.editable').forEach(el => {
-                    el.style.cursor = 'default';
-                    el.onclick = null;
-                });
-            }
-        }
-
-        // Open edit modal
-        function openEditModal(element) {
-            if (!editMode) return;
-            
-            currentEditKey = element.getAttribute('data-key');
-            document.getElementById('editTextarea').value = element.innerHTML;
-            document.getElementById('editModal').classList.add('active');
-        }
-
-        // Close modal
-        function closeModal() {
-            document.getElementById('editModal').classList.remove('active');
-            currentEditKey = null;
-        }
-
-        // Save edit
-        function saveEdit() {
-            const newContent = document.getElementById('editTextarea').value;
-            content[currentEditKey] = newContent;
-            
-            // Update display
-            document.querySelector(`[data-key="${currentEditKey}"]`).innerHTML = newContent;
-            
-            // Save to localStorage
-            localStorage.setItem('proposalContent', JSON.stringify(content));
-            
-            closeModal();
-        }
-
-        // Export content
-        function exportContent() {
-            const dataStr = JSON.stringify(content, null, 2);
-            const dataBlob = new Blob([dataStr], {type: 'application/json'});
-            const url = URL.createObjectURL(dataBlob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'proposal-content.json';
-            link.click();
-        }
-
-        // Initialize
-        window.onload = loadContent;
-
-        // Close modal on escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
         });
-    </script>
+        
+        closeChat.addEventListener('click', function() {
+            isOpen = false;
+            chatWindow.style.display = 'none';
+        });
+        
+        // Send message
+        sendButton.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+        
+        async function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+            
+            // Add user message to chat
+            addMessage(message, 'user');
+            chatInput.value = '';
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            try {
+                // IMPORTANT: Replace this URL with your actual Lambda endpoint
+                const LAMBDA_ENDPOINT = 'https://YOUR_API_GATEWAY_URL.execute-api.REGION.amazonaws.com/PROD/chatbot';
+                
+                const response = await fetch(LAMBDA_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        companyField: industrySelect.value
+                    })
+                });
+                
+                const data = await response.json();
+                
+                // Remove typing indicator
+                removeTypingIndicator();
+                
+                if (data.success) {
+                    addMessage(data.response, 'bot');
+                } else {
+                    addMessage('Sorry, I encountered an error. Please try again.', 'bot');
+                }
+                
+            } catch (error) {
+                console.error('Chat error:', error);
+                removeTypingIndicator();
+                
+                // Fallback responses if Lambda is not available
+                const fallbackResponse = getFallbackResponse(message, industrySelect.value);
+                addMessage(fallbackResponse, 'bot');
+            }
+        }
+        
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            messageDiv.innerHTML = formatMessage(text);
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Show notification if chat is closed
+            if (!isOpen && sender === 'bot') {
+                hasNewMessage = true;
+                document.getElementById('chatNotification').style.display = 'flex';
+            }
+        }
+        
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typingIndicator';
+            typingDiv.className = 'message bot-message';
+            typingDiv.innerHTML = '<em>AI is typing...</em>';
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function removeTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+        
+        function formatMessage(text) {
+            return text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>')
+                .replace(/(📦|🚀|⭐|🧠|💬|👁️|📊|🔄|🔒|🛟|🔧|📚|✅|🛡️|📋|🔌|⚙️|💼|💻|🌐)/g, 
+                         '<span style="font-size: 1.2em; margin-right: 3px;">$1</span>')
+                .replace(/✓/g, '✅')
+                .replace(/💰/g, '💰')
+                .replace(/✨/g, '✨')
+                .replace(/📅/g, '📅')
+                .replace(/📊/g, '📊')
+                .replace(/🎯/g, '🎯')
+                .replace(/🔒/g, '🔒')
+                .replace(/🔌/g, '🔌');
+        }
+        
+        // Fallback responses in case Lambda is not ready
+        function getFallbackResponse(message, industry) {
+            const lowerMessage = message.toLowerCase();
+            
+            if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+                return `Hello! I'm your AI assistant for ${industry} solutions. I can help with pricing, features, implementation, ROI, or scheduling a demo. What would you like to know?`;
+            } else if (lowerMessage.includes('price') || lowerMessage.includes('cost')) {
+                return `Our AI solutions for ${industry} start at $2,500/month for the Starter Package, $5,800/month for Professional (most popular), and $12,000/month for Enterprise. Would you like details on any specific package?`;
+            } else if (lowerMessage.includes('feature')) {
+                return `Our ${industry} AI system includes machine learning, intelligent chatbots, computer vision, advanced analytics, process automation, and enterprise security - all powered by AWS.`;
+            } else if (lowerMessage.includes('demo')) {
+                return `I'd be happy to schedule a demo! Please email demo@yourcompany.com or call +370 XXX XXXXX. We'll show you a live walkthrough and ROI calculations.`;
+            } else {
+                return `I'm here to help you learn about our AI solutions for ${industry}! I can answer questions about pricing, features, implementation timeline, ROI, security, or scheduling a demo. What would you like to know?`;
+            }
+        }
+        
+        // Auto-open after 30 seconds if user is still on page
+        setTimeout(function() {
+            if (!isOpen && !hasNewMessage) {
+                hasNewMessage = true;
+                document.getElementById('chatNotification').style.display = 'flex';
+            }
+        }, 30000);
+    });
+</script>
 </body>
+
 </html>
