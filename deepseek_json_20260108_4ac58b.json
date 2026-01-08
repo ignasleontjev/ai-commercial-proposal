@@ -1,0 +1,13 @@
+{
+  "name": "miningops-ai-website",
+  "version": "1.0.0",
+  "description": "MiningOps AI Suite Commercial Proposal Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "build": "echo 'No build required for static site'"
+  },
+  "dependencies": {
+    "serve": "^14.0.0"
+  }
+}
