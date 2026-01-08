@@ -752,7 +752,6 @@
         // CONFIGURATION - REPLACE THIS WITH YOUR API GATEWAY URL
         // =================================================================
         const API_URL = 'https://90ht3dn0ac.execute-api.us-east-1.amazonaws.com/prod/chatbot';
-        // Example: 'https://abc123xyz.execute-api.us-east-1.amazonaws.com/prod/chat'
         // =================================================================
 
         let editMode = false;
@@ -859,48 +858,6 @@
                 const titleElement = document.querySelector('[data-key="hero-title"]');
                 const companyField = titleElement ? titleElement.innerText.replace('Enterprise AI System for', '').trim() : 'business';
 
-// After removing the check, it should look like this:
-async function sendMessage() {
-    const message = chatInput.value.trim();
-    if (!message) return;
-
-    // Disable inputs
-    chatInput.disabled = true;
-    chatSend.disabled = true;
-
-    // Add user message
-    addMessage(message, 'user');
-    chatInput.value = '';
-    chatInput.style.height = '44px';
-
-    // Show typing indicator
-    const typingIndicator = document.createElement('div');
-    typingIndicator.className = 'typing-indicator';
-    typingIndicator.innerHTML = '<span></span><span></span><span></span>';
-    typingIndicator.id = 'typing';
-    chatMessages.appendChild(typingIndicator);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-
-    try {
-        // Get company field from page
-        const titleElement = document.querySelector('[data-key="hero-title"]');
-        const companyField = titleElement ? titleElement.innerText.replace('Enterprise AI System for', '').trim() : 'business';
-
-        // DIRECT API CALL - NO CHECK
-        console.log('Sending request to:', API_URL);
-        
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                message: message,
-                companyField: companyField
-            })
-        });
-
-        // ... rest of your code
                 // Call Lambda via API Gateway
                 console.log('Sending request to:', API_URL);
                 
@@ -925,7 +882,8 @@ async function sendMessage() {
                 console.log('Response data:', data);
 
                 // Remove typing indicator
-                document.getElementById('typing').remove();
+                const typingEl = document.getElementById('typing');
+                if (typingEl) typingEl.remove();
 
                 // Add AI response
                 if (data.success && data.response) {
@@ -940,16 +898,8 @@ async function sendMessage() {
                 if (typingEl) typingEl.remove();
                 
                 // Show user-friendly error
-                let errorMessage = '❌ Connection error. ';
-                if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
-                    errorMessage += 'Please check your API Gateway URL and CORS settings.';
-                } else if (error.message.includes('404')) {
-                    errorMessage += 'API endpoint not found. Verify your API Gateway stage is deployed.';
-                } else if (error.message.includes('403')) {
-                    errorMessage += 'Access denied. Check Lambda permissions and API Gateway authorization.';
-                } else {
-                    errorMessage += error.message;
-                }
+                let errorMessage = '❌ Sorry, there was an error connecting to the AI. ';
+                errorMessage += 'Please try again in a moment.';
                 
                 addMessage(errorMessage, 'bot');
             } finally {
@@ -993,11 +943,3 @@ async function sendMessage() {
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
