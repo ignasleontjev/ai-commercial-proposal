@@ -751,7 +751,7 @@
         // =================================================================
         // CONFIGURATION - REPLACE THIS WITH YOUR API GATEWAY URL
         // =================================================================
-        const API_URL = 'YOUR_API_GATEWAY_URL_HERE';
+        const API_URL = 'https://90ht3dn0ac.execute-api.us-east-1.amazonaws.com/prod/chatbot';
         // Example: 'https://abc123xyz.execute-api.us-east-1.amazonaws.com/prod/chat'
         // =================================================================
 
@@ -860,7 +860,7 @@
                 const companyField = titleElement ? titleElement.innerText.replace('Enterprise AI System for', '').trim() : 'business';
 
                 // Check if API is configured
-                if (!API_URL || API_URL === 'YOUR_API_GATEWAY_URL_HERE') {
+                if (!API_URL || API_URL === 'https://90ht3dn0ac.execute-api.us-east-1.amazonaws.com/prod/chatbot') {
                     // Show error about missing API configuration
                     document.getElementById('typing').remove();
                     addMessage('⚠️ API Gateway URL not configured. Please update the API_URL in the code with your actual API Gateway endpoint. See the setup guide for instructions.', 'bot');
@@ -961,3 +961,4 @@
     </script>
 </body>
 </html>
+
